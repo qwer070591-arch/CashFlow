@@ -1,0 +1,42 @@
+{
+  "name": "@cashflow/server",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "predev": "npm run build",
+    "dev": "concurrently -n compile,serve -c yellow,green \"tsc --watch -p tsconfig.build.json --preserveWatchOutput\" \"node --watch dist/index.js\"",
+    "build": "tsc -p tsconfig.build.json",
+    "typecheck": "tsc --noEmit -p tsconfig.json",
+    "start": "node dist/index.js",
+    "db:validate": "prisma validate",
+    "db:generate": "prisma generate",
+    "db:status": "prisma migrate status",
+    "db:migrate": "prisma migrate dev"
+  },
+  "dependencies": {
+    "@prisma/adapter-pg": "7.10.1",
+    "@prisma/client": "7.10.1",
+    "argon2": "0.45.1",
+    "connect-pg-simple": "10.0.0",
+    "cors": "2.8.6",
+    "dotenv": "18.0.9",
+    "express": "5.3.0",
+    "express-rate-limit": "8.7.1",
+    "express-session": "1.18.2",
+    "helmet": "8.3.0",
+    "pg": "8.23.1",
+    "zod": "4.6.7"
+  },
+  "devDependencies": {
+    "@types/connect-pg-simple": "7.0.3",
+    "@types/cors": "2.8.19",
+    "@types/express": "5.0.6",
+    "@types/express-session": "1.18.2",
+    "@types/node": "24.10.13",
+    "@types/pg": "8.15.6",
+    "@types/supertest": "7.2.1",
+    "prisma": "7.10.1",
+    "supertest": "7.3.1"
+  }
+}

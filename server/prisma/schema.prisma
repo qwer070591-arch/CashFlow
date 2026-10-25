@@ -1,0 +1,85 @@
+generator client {
+  provider = "prisma-client"
+  output   = "../src/generated/prisma"
+}
+
+datasource db {
+  provider = "postgresql"
+}
+
+enum EntryType {
+  INCOME
+  EXPENSE
+}
+
+model User {
+  id                String        @id @default(uuid()) @db.Uuid
+  name              String        @db.VarChar(100)
+  email             String        @unique @db.VarChar(320)
+  passwordHash      String        @db.VarChar(255)
+  preferredCurrency String        @default("TWD") @db.VarChar(3)
+  createdAt         DateTime      @default(now()) @db.Timestamptz(3)
+  updatedAt         DateTime      @updatedAt @db.Timestamptz(3)
+  categories        Category[]
+  transactions      Transaction[]
+  budgets           Budget[]
+}
+
+model Session {
+  sid    String   @id @db.VarChar
+  sess   Json     @db.Json
+  expire DateTime @db.Timestamp(6)
+
+  @@index([expire], map: "IDX_session_expire")
+  @@map("session")
+}
+
+model Category {
+  id           String        @id @default(uuid()) @db.Uuid
+  userId       String        @db.Uuid
+  name         String        @db.VarChar(80)
+  type         EntryType
+  color        String        @db.VarChar(20)
+  icon         String        @db.VarChar(60)
+  user         User          @relation(fields: [userId], references: [id], onDelete: Cascade)
+  transactions Transaction[]
+  budgets      Budget[]
+
+  @@unique([id, userId, type])
+  @@unique([id, userId])
+  @@unique([userId, type, name])
+  @@index([userId, type])
+}
+
+model Transaction {
+  id              String    @id @default(uuid()) @db.Uuid
+  userId          String    @db.Uuid
+  categoryId      String    @db.Uuid
+  type            EntryType
+  amount          Decimal   @db.Decimal(18, 2)
+  description     String?   @db.VarChar(500)
+  transactionDate DateTime  @db.Date
+  createdAt       DateTime  @default(now()) @db.Timestamptz(3)
+  updatedAt       DateTime  @updatedAt @db.Timestamptz(3)
+  user            User      @relation(fields: [userId], references: [id], onDelete: Cascade)
+  category        Category  @relation(fields: [categoryId, userId, type], references: [id, userId, type], onDelete: Restrict)
+
+  @@index([userId, transactionDate])
+  @@index([categoryId, userId, type])
+}
+
+model Budget {
+  id         String   @id @default(uuid()) @db.Uuid
+  userId     String   @db.Uuid
+  categoryId String?  @db.Uuid
+  month      DateTime @db.Date
+  amount     Decimal  @db.Decimal(18, 2)
+  createdAt  DateTime @default(now()) @db.Timestamptz(3)
+  updatedAt  DateTime @updatedAt @db.Timestamptz(3)
+  user       User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  category   Category? @relation(fields: [categoryId, userId], references: [id, userId], onDelete: Restrict)
+
+  @@unique([userId, categoryId, month])
+  @@index([userId, month])
+  @@index([categoryId, userId])
+}

@@ -1,0 +1,171 @@
+# GitHub 公開檔案審閱清單
+
+此清單是首次提交白名單；目前 102 個可追蹤候選檔案，尚未執行 stage 或 commit。README 引用的 8 張截圖已逐張目視檢查；根目錄 `AGENTS.md` 與其他 48 張舊截圖保留本機，並由專案 `.gitignore` 排除。
+
+## 首次提交候選（102 個）
+
+- `.env.example`
+- `.gitignore`
+- `DESIGN.md`
+- `README.md`
+- `client/.env.example`
+- `client/index.html`
+- `client/package.json`
+- `client/src/app/App.tsx`
+- `client/src/components/AnalyticsCharts.tsx`
+- `client/src/components/AppIcon.tsx`
+- `client/src/components/BudgetProgress.tsx`
+- `client/src/components/StatusBadge.tsx`
+- `client/src/components/useModalDialog.ts`
+- `client/src/hooks/useAuth.ts`
+- `client/src/hooks/useHealth.ts`
+- `client/src/layouts/AppLayout.tsx`
+- `client/src/lib/money.ts`
+- `client/src/lib/navigation.ts`
+- `client/src/main.tsx`
+- `client/src/pages/AuthPage.tsx`
+- `client/src/pages/BudgetPage.tsx`
+- `client/src/pages/DashboardPage.tsx`
+- `client/src/pages/PlaceholderPage.tsx`
+- `client/src/pages/SettingsPage.tsx`
+- `client/src/pages/TransactionsPage.tsx`
+- `client/src/services/api.ts`
+- `client/src/services/auth.ts`
+- `client/src/services/budgets.ts`
+- `client/src/services/finance.ts`
+- `client/src/services/health.ts`
+- `client/src/services/settings.ts`
+- `client/src/styles/analytics.css`
+- `client/src/styles/budget.css`
+- `client/src/styles/finance.css`
+- `client/src/styles/index.css`
+- `client/src/styles/saas.css`
+- `client/src/styles/settings.css`
+- `client/tests/app.test.tsx`
+- `client/tests/e2e/auth-origin.spec.ts`
+- `client/tests/e2e/budgets.spec.ts`
+- `client/tests/e2e/finance.spec.ts`
+- `client/tests/e2e/foundation.spec.ts`
+- `client/tests/e2e/isolated-api.ts`
+- `client/tests/e2e/quality-audit.spec.ts`
+- `client/tests/e2e/settings.spec.ts`
+- `client/tests/setup.ts`
+- `client/tsconfig.json`
+- `client/vite.config.ts`
+- `compose.yaml`
+- `docs/api.md`
+- `docs/architecture.md`
+- `docs/data-model.md`
+- `docs/docker.md`
+- `docs/publication-inventory.md`
+- `docs/quality-audit.md`
+- `docs/screenshots/budget-over-1440.png`
+- `docs/screenshots/budget-over-390.png`
+- `docs/screenshots/dashboard-with-transactions-1440.png`
+- `docs/screenshots/dashboard-with-transactions-390.png`
+- `docs/screenshots/phase6-settings-1440.png`
+- `docs/screenshots/phase6-settings-390.png`
+- `docs/screenshots/transactions-390.png`
+- `docs/screenshots/transactions-filters-1440.png`
+- `docs/third-party-notices.md`
+- `eslint.config.js`
+- `package-lock.json`
+- `package.json`
+- `playwright.config.ts`
+- `scripts/audit-api-performance.mjs`
+- `scripts/check-db-env.mjs`
+- `scripts/verify-session-persistence.mjs`
+- `server/package.json`
+- `server/prisma.config.ts`
+- `server/prisma/migrations/20261025000000_init/migration.sql`
+- `server/prisma/migrations/20261025010000_auth_sessions/migration.sql`
+- `server/prisma/migrations/20261025020000_monthly_budgets/migration.sql`
+- `server/prisma/migrations/migration_lock.toml`
+- `server/prisma/schema.prisma`
+- `server/src/app.ts`
+- `server/src/config/env.ts`
+- `server/src/index.ts`
+- `server/src/lib/database.ts`
+- `server/src/middleware/csrf.ts`
+- `server/src/middleware/error-handler.ts`
+- `server/src/middleware/require-auth.ts`
+- `server/src/routes/analytics.ts`
+- `server/src/routes/auth.ts`
+- `server/src/routes/budgets.ts`
+- `server/src/routes/categories.ts`
+- `server/src/routes/date-range.ts`
+- `server/src/routes/finance-common.ts`
+- `server/src/routes/health.ts`
+- `server/src/routes/transactions.ts`
+- `server/src/routes/users.ts`
+- `server/tests/app.test.ts`
+- `server/tests/auth.integration.test.ts`
+- `server/tests/budgets.integration.test.ts`
+- `server/tests/finance.integration.test.ts`
+- `server/tests/settings.integration.test.ts`
+- `server/tsconfig.build.json`
+- `server/tsconfig.json`
+- `vitest.config.ts`
+
+## 保留本機，不納入首次提交（49 個）
+
+- `AGENTS.md`：保留供 Codex 本機讀取；根目錄精確忽略規則排除 Git 追蹤。
+- 下列 48 張舊截圖尚未逐張目視核對；精確白名單以外的截圖由 `.gitignore` 排除，檔案仍保留本機。
+
+- `docs/screenshots/budget-create-dialog-1440.png`
+- `docs/screenshots/budget-dialog-create-1440.png`
+- `docs/screenshots/budget-dialog-create-390.png`
+- `docs/screenshots/budget-dialog-create-768.png`
+- `docs/screenshots/budget-dialog-edit-1440.png`
+- `docs/screenshots/budget-empty-1440.png`
+- `docs/screenshots/budget-over-768.png`
+- `docs/screenshots/categories-1440.png`
+- `docs/screenshots/categories-390.png`
+- `docs/screenshots/categories-768.png`
+- `docs/screenshots/dashboard-1440.png`
+- `docs/screenshots/dashboard-390.png`
+- `docs/screenshots/dashboard-768.png`
+- `docs/screenshots/dashboard-auth-1440.png`
+- `docs/screenshots/dashboard-auth-390.png`
+- `docs/screenshots/dashboard-auth-768.png`
+- `docs/screenshots/dashboard-budget-summary-390.png`
+- `docs/screenshots/login-1440.png`
+- `docs/screenshots/login-390.png`
+- `docs/screenshots/login-768.png`
+- `docs/screenshots/mobile-navigation-open-390.png`
+- `docs/screenshots/phase6-analytics-1440.png`
+- `docs/screenshots/phase6-analytics-390.png`
+- `docs/screenshots/phase6-budgets-1440.png`
+- `docs/screenshots/phase6-budgets-390.png`
+- `docs/screenshots/phase6-dashboard-1440.png`
+- `docs/screenshots/phase6-dashboard-390.png`
+- `docs/screenshots/phase6-login-1440.png`
+- `docs/screenshots/phase6-login-390.png`
+- `docs/screenshots/phase6-register-1440.png`
+- `docs/screenshots/phase6-register-390.png`
+- `docs/screenshots/phase6-transactions-1440.png`
+- `docs/screenshots/phase6-transactions-390.png`
+- `docs/screenshots/register-1440.png`
+- `docs/screenshots/register-390.png`
+- `docs/screenshots/register-768.png`
+- `docs/screenshots/settings-1440.png`
+- `docs/screenshots/settings-390.png`
+- `docs/screenshots/settings-768.png`
+- `docs/screenshots/settings-export-1440.png`
+- `docs/screenshots/settings-name-saved-1440.png`
+- `docs/screenshots/settings-password-1440.png`
+- `docs/screenshots/transaction-form-1440.png`
+- `docs/screenshots/transaction-form-390.png`
+- `docs/screenshots/transaction-form-768.png`
+- `docs/screenshots/transactions-1440.png`
+- `docs/screenshots/transactions-768.png`
+- `docs/screenshots/transactions-mobile-filters-390.png`
+
+## 必須忽略
+
+- 根目錄 `AGENTS.md`、上述 48 張舊截圖。
+- `.env` 與其他本機環境設定（保留 `.env.example`、`client/.env.example`）。
+- `node_modules/`、`client/node_modules/`、`server/src/generated/`、`client/dist/`、`server/dist/`、`build/`、`coverage/`。
+- `test-results/`、`playwright-report/`、`playwright/.auth/`、日誌、資料庫備份、CSV 匯出、暫存與 IDE／OS 產物。
+
+本次採保留所有權利方向，沒有新增 `LICENSE`；README 已如實標示。即使有白名單，首次提交前仍應核對 Git 清單，不使用 `git add .` 跳過審閱。
