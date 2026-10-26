@@ -38,7 +38,7 @@ CashFlow 是以 React、TypeScript、Express 與 PostgreSQL 建立的個人財�
 React / Vite → Express /api → Prisma → PostgreSQL
 ```
 
-本機開發時，Vite 將 `/api` 代理到 Express；Docker Compose 僅啟動 PostgreSQL。金額使用 PostgreSQL `numeric(18,2)` 與 Prisma Decimal 處理，避免一般浮點數計算誤差。更多細節見[架構](docs/architecture.md)、[資料模型](docs/data-model.md)、[API](docs/api.md)及[設計規範](DESIGN.md)。
+本機開發時，Vite 將 `/api` 代理到 Express；Docker Compose 僅啟動 PostgreSQL。金額使用 PostgreSQL `numeric(18,2)` 與 Prisma Decimal 處理，避免一般浮點數計算誤差。更多細節見[架構](docs/architecture.md)、[資料模型](docs/data-model.md)、[API](docs/api.md)、[設計規範](DESIGN.md)及[部署準備手冊](docs/deployment-guide.md)。
 
 密碼以 Argon2id 雜湊；Session 存於 PostgreSQL，瀏覽器使用 HttpOnly Cookie。寫入請求檢查 Origin 與 CSRF；私人資料查詢以 Session 中的使用者 ID 限定。CSV 匯出對公式前綴做防護。這些措施不代表專案已取得安全認證。
 

@@ -24,6 +24,7 @@
     "db:ps": "docker compose ps",
     "db:logs": "docker compose logs --tail=100 postgres",
     "db:status": "npm run db:status -w server",
+    "db:deploy": "npm run db:deploy -w server",
     "db:validate": "npm run db:validate -w server",
     "db:generate": "npm run db:generate -w server",
     "predb:migrate": "npm run db:check-config",

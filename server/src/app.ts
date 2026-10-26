@@ -32,6 +32,7 @@ export function createApp(env: Pick<AppEnv, 'CLIENT_ORIGIN'> & Partial<Pick<AppE
   if (env.NODE_ENV === 'production') app.set('trust proxy', 1);
   app.use(helmet());
   app.use(cors({ origin: [...allowedOrigins], credentials: true, allowedHeaders: ['Content-Type', 'X-CSRF-Token', 'Accept'], exposedHeaders: ['X-Export-Count'] }));
+  app.use('/api', (_request, response, next) => { response.setHeader('Cache-Control', 'private, no-store'); next(); });
   app.use(express.json({ limit: '100kb' }));
   app.use('/api/health', createHealthRouter(database));
   if (auth) {

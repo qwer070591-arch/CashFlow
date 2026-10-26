@@ -1,3 +1,4 @@
+import { randomBytes } from 'node:crypto';
 import request from 'supertest';
 import { describe, expect, it, vi } from 'vitest';
 import { createApp } from '../src/app.js';
@@ -13,6 +14,7 @@ describe('CashFlow API', () => {
     const response = await request(app).get('/api/health');
     expect(response.status).toBe(200);
     expect(response.body).toEqual({ status: 'ok', service: 'cashflow-api' });
+    expect(response.headers['cache-control']).toBe('private, no-store');
   });
 
   it('reports database health after a successful real-check interface call', async () => {
@@ -85,5 +87,12 @@ describe('environment validation', () => {
 
   it('rejects missing database URL without printing its value', () => {
     expect(() => parseEnv({ PORT: '3001' })).toThrow('DATABASE_URL');
+  });
+
+  it('requires a public HTTPS origin and a non-placeholder secret in production', () => {
+    const values = { NODE_ENV: 'production', DATABASE_URL: 'postgresql://user:pass@localhost:5432/cashflow', SESSION_SECRET: 'a'.repeat(48) };
+    expect(() => parseEnv({ ...values, CLIENT_ORIGIN: 'http://127.0.0.1:5173' })).toThrow('CLIENT_ORIGIN');
+    expect(() => parseEnv({ ...values, CLIENT_ORIGIN: 'https://app.example.test' })).toThrow('SESSION_SECRET');
+    expect(parseEnv({ ...values, CLIENT_ORIGIN: 'https://app.example.test', SESSION_SECRET: randomBytes(32).toString('hex') }).CLIENT_ORIGIN).toBe('https://app.example.test');
   });
 });

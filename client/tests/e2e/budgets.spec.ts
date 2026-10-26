@@ -144,6 +144,7 @@ test('monthly budgets follow real expenses across pages and devices', async ({ p
   await page.goto('/transactions');
   await page.getByRole('button', { name: '刪除交易 超支測試' }).click();
   await page.getByRole('dialog').getByRole('button', { name: '確認刪除' }).click();
+  await expect(page.getByRole('status')).toContainText('交易已刪除。');
   await page.goto('/budgets');
   await expect(card).toContainText('NT$ 0.00');
   await card.getByRole('button', { name: '刪除預算 餐飲' }).click();
